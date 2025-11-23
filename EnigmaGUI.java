@@ -107,4 +107,35 @@ public class EnigmaGUI extends JFrame {
         return panel;
     }
 
+
+    public void callComm() {
+        
+        //if encrypt / decrypt clicked  
+        //pull info from all textfields
+        args[0] = innerBox.getSelectedItem().toString();
+        args[1] = middleBox.getSelectedItem().toString();
+        args[2] = outBox.getSelectedItem().toString();
+        args[3] = initText.getText();
+
+        args[5] = input.getText();
+        String ret;
+        //sets args[]
+        try {
+            ret = Comms.run(args);
+            for(int i = 0; i < args.length; i++) {
+                System.out.print(args[i] + " ");
+            }
+            System.out.println();
+        } catch (Exception err) {
+            err.printStackTrace();
+            output.setText(err.toString());
+            return;
+        }
+
+        if(ret == null) {
+            return;
+        }
+        output.setText(ret);
+    }
+
 }
