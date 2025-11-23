@@ -24,8 +24,10 @@ public class EnigmaGUI extends JFrame {
         f.setLocation(100, 100);
         
         JPanel tempPanel = createHeader();
+        JPanel bottom = createBottom();
         
         f.add(tempPanel, BorderLayout.NORTH);
+        f.add(bottom);
         f.pack();
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,5 +77,34 @@ public class EnigmaGUI extends JFrame {
         return controlPanel;
     }
     
-    
+    private JPanel createBottom() {
+        JPanel panel = new JPanel();
+        JPanel inPanel, outPanel;
+        JLabel inputLabel, outputLabel;
+        
+        panel.setLayout(new BorderLayout());
+        
+        inPanel = new JPanel();
+        inputLabel = new JLabel("Input");
+        inputLabel.setPreferredSize(new Dimension(80, 100));
+        input = new JTextArea();
+        input.setPreferredSize(new Dimension(600, 100));
+        
+        outPanel = new JPanel();
+        outputLabel = new JLabel("Output");
+        outputLabel.setPreferredSize(new Dimension(80, 100));
+        output = new JTextArea();
+        output.setPreferredSize(new Dimension(600, 100));
+        
+        inPanel.add(inputLabel);
+        inPanel.add(input);
+
+        outPanel.add(outputLabel);
+        outPanel.add(output);
+
+        panel.add(inPanel, BorderLayout.NORTH);
+        panel.add(outPanel);
+        return panel;
+    }
+
 }
